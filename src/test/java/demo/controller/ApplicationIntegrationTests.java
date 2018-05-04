@@ -2,6 +2,7 @@ package demo.controller;
 
 import demo.Application;
 import demo.model.GetCountryRequest;
+import demo.model.GetCountryResponse;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,6 +35,7 @@ public class ApplicationIntegrationTests {
 
         request.setName("Spain");
         System.out.println(request);
-        assertThat(template.marshalSendAndReceive("http://localhost:8080/ws", request)).isNotNull();
+        GetCountryResponse getCountryResponse = (GetCountryResponse) template.marshalSendAndReceive("http://localhost:8080/ws", request);
+        System.out.println(getCountryResponse.toString());
     }
 }
